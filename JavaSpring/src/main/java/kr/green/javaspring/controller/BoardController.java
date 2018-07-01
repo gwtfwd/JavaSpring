@@ -35,8 +35,9 @@ public class BoardController {
 		//ArrayList<Board> list = (ArrayList)boardMapper.getListPage(pageMaker.getCriteria());
 		
 		ArrayList<Board> list;
-		pageMaker.setTotalCount(totalCount);
 		pageMaker.setCriteria(cri);
+		pageMaker.setTotalCount(totalCount);
+		
 		
 		if( type == null ) {
 			type = 0;

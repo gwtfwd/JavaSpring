@@ -7,9 +7,12 @@ public class Criteria {
 	
 	public Criteria() {			// Criteria 디폴트 생성자 : 현재페이지를 1로, 한 페이지당 게시글 수 10개
 		this.page = 1;
-		this.perPageNum = 10;	
+		this.perPageNum = 5;	
 	}
-	
+	public Criteria(int page, int perPageNum) {
+		this.page = page;
+		this.perPageNum = perPageNum;
+	}
 
 	public int getPage() {
 		return page;
