@@ -10,14 +10,39 @@
   	</select>
   
   	<select id="getListPage" resultType="kr.green.javaspring.dao.Board">
-		select * from board limit #{cri.pageStart}, #{cri.perPageNum} 
+		select * from board order by number desc limit #{cri.pageStart}, #{cri.perPageNum} 
 	</select>
   
   	<select id="getCountBoard" resultType="java.lang.Integer">
   		select count(number) from board 
   	</select>
   	
-  	
+  	<!-- 제목검색 -->
+	<select id="getListPageByTitle" resultType="kr.green.javaspring.dao.Board">
+		select * from board where title like #{search} order by number desc limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="getCountBoardByTitle" resultType="java.lang.Integer">
+		select count(number) from board where title like #{search} 
+	</select>
+	
+	<!-- 저자검색 -->
+	<select id="getListPageByAuthor" resultType="kr.green.javaspring.dao.Board">
+		select * from board where author like #{search} order by number desc limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="getCountBoardByAuthor" resultType="java.lang.Integer">
+		select count(number) from board where author like #{search} 
+	</select>
+	
+	<!-- 내용검색 -->
+	<select id="getListPageByContents" resultType="kr.green.javaspring.dao.Board">
+		select * from board where contents like #{search} order by number desc limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="getCountBoardByContents" resultType="java.lang.Integer">
+		select count(number) from board where contents like #{search} 
+	</select> 
   	
 
   </mapper>

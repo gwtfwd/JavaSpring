@@ -15,7 +15,15 @@ public interface BoardMapper {
 	public int getCountBoard();
 	
 	
+	// °Ë»ö
+	public Integer getCountBoardByTitle(@Param("search") String search);
+	public List<Board> getListPageByTitle(@Param("cri") Criteria cri, @Param("search") String search);
+
+	public Integer getCountBoardByAuthor(@Param("search") String search);
+	public List<Board> getListPageByAuthor(@Param("cri") Criteria cri, @Param("search") String search);
 	
+	public Integer getCountBoardByContents(@Param("search") String search);
+	public List<Board> getListPageByContents(@Param("cri") Criteria cri, @Param("search") String search);
 	
 }
 

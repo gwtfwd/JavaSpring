@@ -22,20 +22,47 @@ public class BoardController {
 	BoardMapper boardMapper;
 	
 	@RequestMapping(value = "list")
-	public String boardListGet(Model model, Criteria cri) {
+	public String boardListGet(Model model, Criteria cri, String search, Integer type) {
 		
-		int totalCount = boardMapper.getCountBoard();
+		if(cri == null) {
+			cri = new Criteria();
+		}
+		
+		int totalCount = 0;
 		PageMaker pageMaker = new PageMaker();
 		
 		//ArrayList<Board> list = (ArrayList)boardMapper.getBoard();
+		//ArrayList<Board> list = (ArrayList)boardMapper.getListPage(pageMaker.getCriteria());
 		
-		ArrayList<Board> list = (ArrayList)boardMapper.getListPage(pageMaker.getCriteria());
+		ArrayList<Board> list;
 		pageMaker.setTotalCount(totalCount);
 		pageMaker.setCriteria(cri);
+		
+		if( type == null ) {
+			type = 0;
+		}
+		if( type == 0 ) {
+			totalCount = boardMapper.getCountBoard();
+			list = (ArrayList)boardMapper.getListPage(cri);
+		}
+		else if( type == 1 ) {
+			totalCount = boardMapper.getCountBoardByTitle("%"+search+"%");
+			list = (ArrayList)boardMapper.getListPageByTitle(cri, "%"+search+"%");
+		}
+		else if( type == 2 ) {
+			totalCount = boardMapper.getCountBoardByAuthor("%"+search+"%");
+			list = (ArrayList)boardMapper.getListPageByAuthor(cri, "%"+search+"%");
+		}
+		else {
+			totalCount = boardMapper.getCountBoardByContents("%"+search+"%");
+			list = (ArrayList)boardMapper.getListPageByContents(cri, "%"+search+"%");
+		}
 		
 		pageMaker.setTotalCount(totalCount);
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", list);
+		model.addAttribute("search", search);
+		model.addAttribute("type", type);
 		
 		return "/board/list";
 	}

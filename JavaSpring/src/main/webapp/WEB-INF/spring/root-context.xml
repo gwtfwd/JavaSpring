@@ -27,8 +27,13 @@
 	    <property name="mapperInterface" value="kr.green.javaspring.dao.UserMapper"></property>
 	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
-	<mybatis-spring:scan base-package="kr.green.javaspring.dao"/>	
+	<mybatis-spring:scan base-package="kr.green.javaspring.dao"/>
 	
+	<bean id="boardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="kr.green.javaspring.dao.BoardMapper"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<mybatis-spring:scan base-package="kr.green.javaspring.dao"/>
 	
 		
 </beans>
