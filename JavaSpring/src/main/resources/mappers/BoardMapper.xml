@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.green.javaspring.dao.BoardMapper">
+  
+  	<select id="getBoard" resultType="kr.green.javaspring.dao.Board">
+  		select * from board
+  	</select>
+  
+  	<select id="getListPage" resultType="kr.green.javaspring.dao.Board">
+		select * from board limit #{cri.pageStart}, #{cri.perPageNum} 
+	</select>
+  
+  	<select id="getCountBoard" resultType="java.lang.Integer">
+  		select count(number) from board 
+  	</select>
+  	
+  	
+  	
+
+  </mapper>
