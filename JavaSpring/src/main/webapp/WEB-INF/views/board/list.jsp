@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;" charset=UTF-8>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -17,16 +18,7 @@
 <body>
 	<nav class="navbar navbar-expand-sm bg-white navbar-dark">
   		<div class="container">
-			<form class="form-inline" style="display:inline-block;">
-			  <select class="form-control" name="type" >
-			    <option value="0" <c:out value="${type==0? 'selected':''}"/>>search</option>
-			    <option value="1" <c:out value="${type==1? 'selected':''}"/>>title</option>
-			    <option value="2" <c:out value="${type==2? 'selected':''}"/>>author</option>
-			    <option value="3" <c:out value="${type==3? 'selected':''}"/>>contents</option>
-			  </select>
-			    <input class="form-control mr-sm-2" type="text"  value="${search }" name="search">
-			    <button class="btn btn-success" type="submit">Search</button>
-	  		</form>
+			
 		</div>
 	</nav>
 	
@@ -34,6 +26,18 @@
 	<div class="container">	
 		<br><br>
 		<h2 style="text-align:center; font:Courier10 BT Bold">Board</h2><br><br>
+		
+		<form class="form-inline" style="display:inline-block;">
+			  <select class="form-control" name="type" style="width:100px;">
+			    <option value="0" <c:out value="${type==0? 'selected':''}"/>>search</option>
+			    <option value="1" <c:out value="${type==1? 'selected':''}"/>>title</option>
+			    <option value="2" <c:out value="${type==2? 'selected':''}"/>>author</option>
+			    <option value="3" <c:out value="${type==3? 'selected':''}"/>>contents</option>
+			  </select>
+			    <input class="form-control mr-sm-2" type="text"  value="${search }" name="search" style="width: 100px; border: none; border-bottom-style: inset;">
+			    <a href="/board/list?type=${type }"><i class="fas fa-search fa-lg" style="color:DodgerBlue;" ></i></a>
+			    <!-- <button class="btn btn-success" type="submit">Search</button> -->
+	  		</form>
 		
 		<div> 	
 			<table class="table table-hover">

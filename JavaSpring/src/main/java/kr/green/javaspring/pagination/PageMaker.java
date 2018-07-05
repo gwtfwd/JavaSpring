@@ -9,8 +9,22 @@ public class PageMaker {
 	private boolean next;
 	private int displayPageNum = 10 ;			// 한번에 보여줄 페이지의 수 = 10개
 	Criteria criteria;
+	private String search;
+	private String type;
 	
 	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public int getTotalCount() {
 		return totalCount;
 	}
